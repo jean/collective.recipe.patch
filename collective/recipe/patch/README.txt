@@ -4,12 +4,14 @@ Supported options
 The recipe supports the following options:
 
 path
-    Define a directory in which the patch should be applied. For
+    (If patching an arbitrary path.)
+    Define a directory in which the patch(es) should be applied. For
     example::
 
         path = src/some/directory/
 
 egg
+    (If patching an egg.)
     Define which egg should be patched. You can also pin to a specific
     version. For example::
 
@@ -21,6 +23,9 @@ patches
 
         patches = patches/my_very_sprecial.patch
                   patches/another_loverly.patch
+
+The ``egg`` and ``path`` options are mutually exclusive.
+
 
 Example usage
 =============
