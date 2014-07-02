@@ -1,4 +1,4 @@
 .. contents::
 
-- Code repository: http://github.com/garbas/collective.recipe.patch
-- Report bugs at http://github.com/garbas/collective.recipe.patch/issues
+- Code repository: http://github.com/collective/collective.recipe.patch
+- Report bugs at http://github.com/collective/collective.recipe.patch/issues
