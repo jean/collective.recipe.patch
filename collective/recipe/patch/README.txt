@@ -30,7 +30,7 @@ The ``egg`` and ``path`` options are mutually exclusive.
 Example usage
 =============
 
-Our demo package which we will patch:
+Our demo package which we will patch::
 
     >>> mkdir(sample_buildout, 'demo')
     >>> write(sample_buildout, 'demo', 'README.txt', " ")
@@ -51,7 +51,7 @@ Our demo package which we will patch:
     Running setup script 'demo/setup.py'.
     ...
 
-Create our patch:
+Create our patch::
 
     >>> write(sample_buildout, 'demo.patch',
     ... """diff --git demo.py demo.py
@@ -62,7 +62,7 @@ Create our patch:
     ... +# patching
     ... """)
 
-Let's write out buildout.cfg to patch our demo package:
+Let's write out ``buildout.cfg`` to patch our demo package::
 
     >>> write(sample_buildout, 'buildout.cfg',
     ... """
@@ -76,12 +76,12 @@ Let's write out buildout.cfg to patch our demo package:
     ... patches = demo.patch
     ... """)
 
-Our final egg name depends on current python version:
+Our final egg name depends on current python version::
 
     >>> import sys
     >>> demoegg = 'demo-1.0-py%d.%d.egg' % sys.version_info[:2]
 
-Running the buildout gives us:
+Running the buildout gives us::
 
     >>> print system(buildout)
     Not found: demo/dist/...
@@ -108,7 +108,7 @@ Running the buildout gives us:
 Multiple patches
 ----------------
 
-If you have more than one patch to apply:
+If you have more than one patch to apply::
 
     >>> write(sample_buildout, 'another.patch',
     ... """diff --git demo.py demo.py
@@ -119,8 +119,8 @@ If you have more than one patch to apply:
     ...  # patching
     ... """)
 
-Update your buildout.cfg to list the new patch. In this case,
-another.patch should be applied after demo.patch:
+Update your ``buildout.cfg`` to list the new patch. In this case,
+``another.patch`` should be applied after ``demo.patch``::
 
     >>> write(sample_buildout, 'buildout.cfg',
     ... """
@@ -136,7 +136,7 @@ another.patch should be applied after demo.patch:
     ...     another.patch
     ... """)
 
-Running the buildout gives us:
+Running the buildout gives us::
 
     >>> print system(buildout)
     Not found: demo/dist/...
@@ -158,7 +158,7 @@ Running the buildout gives us:
 External binaries
 -----------------
 
-We can also set an external binary to use for patching:
+We can also set an external binary to use for patching::
 
     >>> write(sample_buildout, 'buildout.cfg',
     ... """
@@ -173,7 +173,7 @@ We can also set an external binary to use for patching:
     ... patches = demo.patch
     ... """)
 
-Running the buildout gives us:
+Running the buildout gives us::
 
     >>> print system(buildout)
     Not found: demo/dist/...
@@ -200,10 +200,10 @@ Running the buildout gives us:
 Patching an egg installed in another part
 -----------------------------------------
 
-Another possibility is to install an egg with zc.recipe.egg (or
+Another possibility is to install an egg with ``zc.recipe.egg`` (or
 probably any other recipe) and patch it afterwards.  However, it is
 necessary to install the egg unzipped, and the egg may end up in the
-eggs-folder instead the develop-eggs folder.
+eggs-folder instead the develop-eggs folder.::
 
     >>> write(sample_buildout, 'buildout.cfg',
     ... """
@@ -222,7 +222,7 @@ eggs-folder instead the develop-eggs folder.
     ... patches = demo.patch
     ... """)
 
-Running the buildout gives us:
+Running the buildout gives us::
 
     >>> print system(buildout)
     Not found: demo/dist/...
@@ -249,7 +249,7 @@ Running the buildout gives us:
 Broken patches
 ----------------
 
-If one of the patches is broken:
+If one of the patches is broken::
 
     >>> write(sample_buildout, 'missing-file.patch',
     ... """diff --git missing-file.py missing-file.py
@@ -261,7 +261,7 @@ If one of the patches is broken:
     ... """)
 
 When you try to apply multiple patches, it will fail to apply any
-subsequent patches, letting you fix the problem:
+subsequent patches, letting you fix the problem::
 
     >>> write(sample_buildout, 'buildout.cfg',
     ... """
@@ -276,7 +276,7 @@ subsequent patches, letting you fix the problem:
     ...           demo.patch
     ... """)
 
-Running the buildout gives us:
+Running the buildout gives us::
 
     >>> print system(buildout)
     Not found: demo/dist/...
@@ -297,7 +297,7 @@ Running the buildout gives us:
     >>> cat(sample_buildout, 'develop-eggs', demoegg, 'demo.py')
     # demo egg
 
-Or when using an external binary:
+Or when using an external binary::
 
     >>> write(sample_buildout, 'buildout.cfg',
     ... """
